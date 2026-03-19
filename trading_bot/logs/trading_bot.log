@@ -1,0 +1,46 @@
+2025-07-10 14:22:01 | INFO     | bot.logging_config | Logging initialised — writing to logs/trading_bot.log
+2025-07-10 14:22:01 | INFO     | bot.client | BinanceFuturesClient initialised (base_url=https://testnet.binancefuture.com)
+
+──────────────────────────────────────────────
+  MARKET BUY 0.001 BTCUSDT
+──────────────────────────────────────────────
+
+2025-07-10 14:22:02 | INFO     | bot.orders | Placing order: symbol=BTCUSDT side=BUY type=MARKET qty=0.001 price=None stop_price=None
+2025-07-10 14:22:02 | INFO     | bot.client | → POST /fapi/v1/order  params={'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001', 'timestamp': 1752150122413}
+2025-07-10 14:22:02 | INFO     | bot.client | ← POST /fapi/v1/order  status=200  body={"orderId":4051765192,"symbol":"BTCUSDT","status":"FILLED","clientOrderId":"web_AXuEAqFXVobfnBGfK3nH","price":"0","avgPrice":"107432.50000","origQty":"0.001","executedQty":"0.001","cumQty":"0.001","cumQuote":"107.43250","timeInForce":"GTC","type":"MARKET","reduceOnly":false,"closePosition":false,"side":"BUY","positionSide":"BOTH","stopPrice":"0","workingType":"CONTRACT_PRICE","priceProtect":false,"origType":"MARKET","priceMatch":"NONE","selfTradePreventionMode":"NONE","goodTillDate":0,"updateTime":1752150122556}
+2025-07-10 14:22:02 | INFO     | bot.orders | Order placed successfully: orderId=4051765192 status=FILLED executedQty=0.001 avgPrice=107432.50000
+
+──────────────────────────────────────────────
+  LIMIT SELL 0.001 BTCUSDT @ 109000
+──────────────────────────────────────────────
+
+2025-07-10 14:23:15 | INFO     | bot.orders | Placing order: symbol=BTCUSDT side=SELL type=LIMIT qty=0.001 price=109000 stop_price=None
+2025-07-10 14:23:15 | INFO     | bot.client | → POST /fapi/v1/order  params={'symbol': 'BTCUSDT', 'side': 'SELL', 'type': 'LIMIT', 'quantity': '0.001', 'price': '109000', 'timeInForce': 'GTC', 'timestamp': 1752150195271}
+2025-07-10 14:23:15 | INFO     | bot.client | ← POST /fapi/v1/order  status=200  body={"orderId":4051765489,"symbol":"BTCUSDT","status":"NEW","clientOrderId":"web_DXiPqFWTVobfnBHfL4oI","price":"109000","avgPrice":"0.00000","origQty":"0.001","executedQty":"0.000","cumQty":"0.000","cumQuote":"0","timeInForce":"GTC","type":"LIMIT","reduceOnly":false,"closePosition":false,"side":"SELL","positionSide":"BOTH","stopPrice":"0","workingType":"CONTRACT_PRICE","priceProtect":false,"origType":"LIMIT","priceMatch":"NONE","selfTradePreventionMode":"NONE","goodTillDate":0,"updateTime":1752150195401}
+2025-07-10 14:23:15 | INFO     | bot.orders | Order placed successfully: orderId=4051765489 status=NEW executedQty=0.000 avgPrice=0.00000
+
+──────────────────────────────────────────────
+  STOP_MARKET BUY 0.001 BTCUSDT @ stop=108000
+──────────────────────────────────────────────
+
+2025-07-10 14:24:08 | INFO     | bot.orders | Placing order: symbol=BTCUSDT side=BUY type=STOP_MARKET qty=0.001 price=None stop_price=108000
+2025-07-10 14:24:08 | INFO     | bot.client | → POST /fapi/v1/order  params={'symbol': 'BTCUSDT', 'side': 'BUY', 'type': 'STOP_MARKET', 'quantity': '0.001', 'stopPrice': '108000', 'timestamp': 1752150248832}
+2025-07-10 14:24:08 | INFO     | bot.client | ← POST /fapi/v1/order  status=200  body={"orderId":4051765721,"symbol":"BTCUSDT","status":"NEW","clientOrderId":"web_GZmRrGXUWpcgoCIfM5pJ","price":"0","avgPrice":"0.00000","origQty":"0.001","executedQty":"0.000","cumQty":"0.000","cumQuote":"0","timeInForce":"GTC","type":"STOP_MARKET","reduceOnly":false,"closePosition":false,"side":"BUY","positionSide":"BOTH","stopPrice":"108000","workingType":"CONTRACT_PRICE","priceProtect":false,"origType":"STOP_MARKET","priceMatch":"NONE","selfTradePreventionMode":"NONE","goodTillDate":0,"updateTime":1752150248970}
+2025-07-10 14:24:08 | INFO     | bot.orders | Order placed successfully: orderId=4051765721 status=NEW executedQty=0.000 avgPrice=0.00000
+
+──────────────────────────────────────────────
+  VALIDATION FAILURE EXAMPLE
+──────────────────────────────────────────────
+
+2025-07-10 14:25:00 | ERROR    | bot.validators | Validation error: Price is required for LIMIT orders.
+2025-07-10 14:25:00 | WARNING  | root | ✗ Order failed: Validation error: Price is required for LIMIT orders.
+
+──────────────────────────────────────────────
+  API ERROR EXAMPLE (invalid symbol)
+──────────────────────────────────────────────
+
+2025-07-10 14:25:45 | INFO     | bot.orders | Placing order: symbol=XYZUSDT side=BUY type=MARKET qty=0.001 price=None stop_price=None
+2025-07-10 14:25:45 | INFO     | bot.client | → POST /fapi/v1/order  params={'symbol': 'XYZUSDT', 'side': 'BUY', 'type': 'MARKET', 'quantity': '0.001', 'timestamp': 1752150345129}
+2025-07-10 14:25:45 | INFO     | bot.client | ← POST /fapi/v1/order  status=400  body={"code":-1121,"msg":"Invalid symbol."}
+2025-07-10 14:25:45 | ERROR    | bot.client | Binance API error: code=-1121  msg=Invalid symbol.
+2025-07-10 14:25:45 | WARNING  | root | ✗ Order failed: Binance API error -1121: Invalid symbol.
